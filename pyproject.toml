@@ -1,0 +1,9 @@
+[project]
+name = "timeline"
+version = "0.1.0"
+description = "A timeline web app for displaying historical events."
+requires-python = ">=3.12"
+dependencies = [
+    "django>=6.1,<7",
+    "pillow>=12.0",
+]

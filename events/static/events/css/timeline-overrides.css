@@ -1,0 +1,10 @@
+/*
+   TimelineJS3 only widens a filmstrip item's collapsed box (100px -> 200px)
+   on :hover/:focus, via a "-small" class its JS toggles off hover. That JS
+   also strips "-small" once an item becomes the active (selected) one, so
+   the active item is left permanently collapsed instead of expanded. Force
+   the width directly on the active item so it doesn't depend on that class.
+*/
+.tl-timemarker.tl-timemarker-active .tl-timemarker-content-container {
+    width: 200px !important;
+}

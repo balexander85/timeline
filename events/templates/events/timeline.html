@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Timeline</title>
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    <link rel="stylesheet" href="{% static 'events/css/timeline-overrides.css' %}">
+    <style>
+        html, body { margin: 0; }
+        #timeline-embed { width: 100%; height: 650px; }
+    </style>
+</head>
+<body>
+    {% if events %}
+        {{ timeline_data|json_script:"timeline-data" }}
+        <div id="timeline-embed"></div>
+        <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+        <script>
+            var timelineData = JSON.parse(document.getElementById('timeline-data').textContent);
+            window.timeline = new TL.Timeline('timeline-embed', timelineData);
+        </script>
+    {% else %}
+        <p style="text-align: center; margin-top: 4rem; font-family: sans-serif;">
+            No events yet. Add some in the <a href="/admin/">admin</a>.
+        </p>
+    {% endif %}
+</body>
+</html>
